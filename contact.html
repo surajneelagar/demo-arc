@@ -405,14 +405,12 @@
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form values
         const name = this.elements['username'].value;
         const phone = this.elements['phone'].value;
         const company = this.elements['company'].value;
         const email = this.elements['email'].value;
         const message = this.elements['message'].value;
         
-        // Format the WhatsApp message
         let whatsappMessage = `New Contact Form Submission:\n\n`;
         whatsappMessage += `Name: ${name}\n`;
         whatsappMessage += `Phone: ${phone}\n`;
@@ -420,14 +418,17 @@
         whatsappMessage += `Email: ${email}\n`;
         if (message) whatsappMessage += `Message: ${message}\n`;
         
-       
         const encodedMessage = encodeURIComponent(whatsappMessage);
+        const whatsappNumber = "6364685726"; // Replace with your number
         
-        // Replace with your WhatsApp number (include country code, remove any +, 0, or -)
-        const whatsappNumber = "6364685726"; 
+        // Mobile-friendly redirection
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        window.location.href = whatsappUrl; // Best for mobile
         
-        // Open WhatsApp with the message
-        window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        // Fallback to WhatsApp Web if needed
+        setTimeout(() => {
+            window.location.href = `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        }, 2000);
     });
     </script>
 </body>
