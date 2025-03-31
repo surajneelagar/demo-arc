@@ -19,7 +19,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: var(--text-dark);
     line-height: 1.6;
     background-color: #f9f9f9;
@@ -770,7 +770,7 @@ img {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
     gap: 30px;
 }
 
@@ -862,8 +862,84 @@ img {
     gap: 50px;
 }
 
+/* Wardrobe Intro Section */
+.wardrobe-intro {
+    padding: 4rem 0;
+}
+
+.wardrobe-intro .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
 .intro-content {
     flex: 1;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--primary-bg);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.intro-content p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.intro-image {
+    flex: 1;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Mobile View - Stack content above image */
+@media (max-width: 768px) {
+    .wardrobe-intro .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .intro-content {
+        order: 1; /* Content comes first */
+        width: 100%;
+    }
+    
+    .intro-image {
+        order: 2; /* Image comes after */
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Small Mobile Adjustments */
+@media (max-width: 480px) {
+    .wardrobe-intro {
+        padding: 2.5rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .intro-content p {
+        font-size: 1rem;
+    }
 }
 
 .intro-image {
@@ -1610,5 +1686,62 @@ img {
     
     .section-title {
         font-size: 2rem;
+    }
+}
+
+
+/* WhatsApp Float Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Navigation Links Uppercase */
+.nav ul li a {
+    text-transform: uppercase;
+    font-size: 0.9rem; /* Adjust as needed */
+    letter-spacing: 0.05em; /* Improves readability for all-caps */
+}
+
+/* If you want to keep the active link styled differently */
+.nav ul li a.active {
+    font-weight: 600; /* Example - keep your existing active state */
+    /* Add any other active link styles you currently have */
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 768px) {
+    .nav ul li a {
+        font-size: 1rem; /* Slightly larger for mobile */
     }
 }
