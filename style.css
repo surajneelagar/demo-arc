@@ -36,9 +36,47 @@ html, body {
 #page1 {
     min-height: 100vh;
     width: 100%;
-    background-color: #EFEAE3;
     position: relative;
     padding: 0 2vw;
+    background-color: #EFEAE3;
+    overflow: hidden;
+}
+
+/* Background Slideshow Animation */
+#page1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: bgSlideshow 16s infinite;
+    opacity: 0.7; /* Adjust opacity */
+    z-index: 0;
+}
+
+/* Keyframes for background transitions */
+@keyframes bgSlideshow {
+    0%, 100% {
+        background-image: url("https://media.designcafe.com/wp-content/uploads/2025/03/19002310/semi-modular-kitchen-guide.jpg");
+    }
+    25% {
+        background-image: url("https://media.designcafe.com/wp-content/uploads/2025/03/19112516/what-is-semi-modular-kitchen.jpg");
+    }
+    50% {
+        background-image: url("https://media.designcafe.com/wp-content/uploads/2025/03/19002351/Why-go-for-semi-modular-kitchen-ideas.jpg");
+    }
+    75% {
+        background-image: url("https://media.designcafe.com/wp-content/uploads/2025/03/19002320/small-or-l-shape-semi-modular-kitchen.jpg");
+    }
+}
+
+/* Ensure content stays above background */
+#page1 > * {
+    position: relative;
+
 }
 
 nav {
@@ -326,16 +364,23 @@ nav h3 {
     padding: 4vw 0;
 }
 
+#elem-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 10px; /* Adds some space between grid items */
+}
+
 .elem {
     height: 150px;
-    width: 100%;
     position: relative;
-
-    border-bottom: 1px solid #38383864;
+    border: 1px solid #38383864; /* Changed from border-bottom to border */
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content horizontally */
     padding: 0 2vw;
+    width: 100%; /* Takes full width of grid cell */
+    box-sizing: border-box; /* Includes padding and border in width calculation */
 }
 
 .elem h2 {
@@ -632,7 +677,8 @@ nav h3 {
         justify-content: center;
     }
 }
-#full-scr {
+/* #full-scr {
+    top: 170px;
     height: 100vh;
     width: 100%;
     background-color: #00000070;
@@ -649,8 +695,78 @@ nav h3 {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
-}
+} */
 
+
+    /* Base nav styles */
+    nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* Desktop menu - visible by default */
+    #nav-part2 {
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Mobile menu button - hidden by default */
+    #menu-button {
+        display: none;
+        cursor: pointer;
+    }
+
+    /* Mobile menu - hidden by default */
+    #mobile-menu {
+        display: none;
+        position: fixed;
+        top: 140px;
+        left: 0;
+        height: 50vh;
+        width: 100%;
+        background-color: #EFEAE3;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 1000;
+        padding: 40px 20px;
+        box-sizing: border-box;
+    }
+
+    #mobile-menu.active {
+        display: flex;
+    }
+
+    /* Mobile menu link styles */
+    #mobile-menu h4 a {
+        padding: 10px 20px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 50px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.73);
+        transition: all ease 0.4s;
+        position: relative;
+        font-size: 18px;
+        overflow: hidden;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    /* Mobile view */
+    @media (max-width: 600px) {
+        #nav-part2 {
+            display: none;
+        }
+        #menu-button {
+            display: block;
+        }
+    }
 @media (max-width:600px) {
 
     #page1 {
@@ -874,4 +990,64 @@ nav h3 {
         font-size: 9vw;
       
     }
+}
+
+
+
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 24px;
 }
