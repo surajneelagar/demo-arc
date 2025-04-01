@@ -1789,3 +1789,8 @@ img {
         font-size: 1rem; /* Slightly larger for mobile */
     }
 }
+
+
+.cta-content{
+    margin: 40px auto;
+}
