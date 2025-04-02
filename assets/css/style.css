@@ -710,10 +710,12 @@ img {
 /* Page Hero (for inner pages) */
 .page-hero {
     padding: 180px 0 80px;
-    background-color: var(--primary-bg);
+    background: linear-gradient(rgba(0, 49, 53, 0.7), rgba(0, 49, 53, 0.7)), 
+                url('../images/bgimg.jpg') no-repeat center center/cover;
     color: var(--text-light);
     text-align: center;
 }
+
 
 .page-title {
     font-size: 3rem;
