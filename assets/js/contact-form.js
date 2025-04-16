@@ -44,3 +44,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+function sendToWhatsApp(event) {
+    event.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+    
+    // Format WhatsApp message
+    const whatsappMessage = `New Contact Form Submission:
+    
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+Message: ${message}`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Your WhatsApp number in international format (replace with your number)
+    const whatsappNumber = "9632418641"; // Example: India (+91) 1234567890
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Redirect to WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Optional: Reset form after submission
+    event.target.reset();
+}

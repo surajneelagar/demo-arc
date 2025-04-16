@@ -589,7 +589,7 @@ img {
     margin-bottom: 60px;
 }
 
-.footer-logo img {
+.footer-logo {
     height: 50px;
     margin-bottom: 20px;
 }
@@ -693,6 +693,7 @@ img {
     opacity: 0.7;
     font-size: 0.9rem;
 }
+
 
 .footer-legal {
     margin-top: 10px;
