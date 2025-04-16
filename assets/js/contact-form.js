@@ -57,13 +57,13 @@ function sendToWhatsApp(event) {
     const message = document.getElementById('message').value;
     
     // Format WhatsApp message
-    const whatsappMessage = `New Contact Form Submission:
+    const whatsappMessage = `Query Form Submission:
     
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${service}
-Message: ${message}`;
+    Name: ${name}
+    Email: ${email}
+    Phone: ${phone}
+    Service: ${service}
+    Message: ${message}`;
     
     // Encode message for URL
     const encodedMessage = encodeURIComponent(whatsappMessage);
