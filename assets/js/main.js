@@ -92,3 +92,58 @@ function initAnimations() {
         observer.observe(element);
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Create lightbox element
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <span class="close-lightbox">&times;</span>
+            <img class="lightbox-img" src="" alt="">
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    // Get all view buttons
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const lightboxImg = lightbox.querySelector('.lightbox-img');
+    const closeBtn = lightbox.querySelector('.close-lightbox');
+    
+    // Add click event to each button
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.type-card');
+            const imgSrc = card.querySelector('img').src;
+            const altText = card.querySelector('img').alt;
+            
+            lightboxImg.src = imgSrc;
+            lightboxImg.alt = altText;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Close lightbox
+    closeBtn.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+    
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Close with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
