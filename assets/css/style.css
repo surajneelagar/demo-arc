@@ -631,7 +631,9 @@ img {
 }
 
 .footer-newsletter a:hover {
-    color: var(--cta); /* Change color on hover (adjust as needed) */
+    opacity: 1;
+    color: var(--cta);
+    padding-left: 5px;
   }
 .footer-links h3::after,
 .footer-contact h3::after,
