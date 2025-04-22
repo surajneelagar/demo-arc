@@ -71,7 +71,7 @@ img {
 }
 
 .logo img {
-    height: 50px; /* Adjust as needed */
+    height: 70px; /* Adjust as needed */
     width: auto;
     transition: var(--transition);
 }
@@ -164,12 +164,6 @@ img {
     background-color: rgba(0, 49, 53, 0.95);
     padding: 15px 0;
     box-shadow: var(--shadow);
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
-    transition: var(--transition);
 }
 
 .nav ul {
@@ -592,7 +586,7 @@ img {
 }
 
 .footer-logo {
-    height: 50px;
+    height: 70px;
     margin-bottom: 20px;
 }
 
